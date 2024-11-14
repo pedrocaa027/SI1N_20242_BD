@@ -1,0 +1,129 @@
+INSERT INTO alunos (codigo_aluno, nome, cpf, data_nascimento, endereco)
+VALUES
+(1, 'João', '123.456.789-00', '1990-01-15', 'Rua das Flores, 123, SP');
+
+INSERT INTO alunos (codigo_aluno, nome, cpf, data_nascimento, endereco)
+VALUES (2, 'Ana','7.654.321-00', '1995-05-22', 'Avenida Central, 456, RJ');
+
+
+
+INSERT INTO modalidades (codigo_modalidade, nome)
+VALUES
+(1, 'Musculação');
+
+INSERT INTO modalidades (codigo_modalidade, nome)
+VALUES
+(2, 'Natação');
+
+INSERT INTO modalidades (codigo_modalidade, nome)
+VALUES
+(3, 'Pilates');
+
+
+INSERT INTO instrutores (codigo_instrutor, nome, cpf, especialidade)
+VALUES
+(1, 'Carlos', '111.222.333-44', 'Musculação');
+
+INSERT INTO instrutores (codigo_instrutor, nome, cpf, especialidade)
+VALUES
+(2, 'Amanda','66.777-88', 'Natação');
+
+
+INTO planos_de_treinamento (codigo_plano, codigo_aluno, descricao, data_inicio, data_fim)
+VALUES
+(1, 1, 'Plano de musculação para ganho de massa', '2024-01-01', '2024-12-31');
+
+INSERT INTO planos_de_treinamento (codigo_plano, codigo_aluno, descricao, data_inicio, data_fim)
+VALUES 
+(2, 2, 'Plano de natação para resistência', '2024-01-01', '2024-06-30');
+
+
+INSERT INTO aulas (codigo_aula, codigo_modalidade, codigo_instrutor, horario, capacidade)
+VALUES
+(1, 1, 1, '2024-03-10 09:00:00', 20);
+
+
+INSERT INTO aulas (codigo_aula, codigo_modalidade, codigo_instrutor, horario, capacidade)
+VALUES
+(2, 2, 2, '2024-03-10 10:00:00', 15);
+
+
+INSERT INTO pagamentos (codigo_pagamento, codigo_aluno, valor, data_pagamento, status)
+VALUES
+(1, 1, 200.00, '2024-01-05', 'Pago');
+
+INSERT INTO pagamentos (codigo_pagamento, codigo_aluno, valor, data_pagamento, status)
+VALUES (2, 2, 250.00, '2024-01-06', 'Pendente');
+
+
+UPDATE alunos
+SET endereco = 'Rua das Palmeiras, 456, SP'
+WHERE codigo_aluno = 1;
+
+
+UPDATE alunos
+SET nome = 'João'
+WHERE codigo_aluno = 1;
+
+
+UPDATE instrutores
+SET especialidade = 'Pilates'
+WHERE codigo_instrutor = 2;
+
+
+UPDATE instrutores
+SET data_nascimento = '1985-08-10'
+WHERE codigo_instrutor = 1;
+
+
+UPDATE planos_de_treinamento
+SET data_fim = '2024-12-15'
+WHERE codigo_plano = 1;
+
+
+UPDATE planos_de_treinamento
+SET descricao = 'Plano de musculação para aumento de força'
+WHERE codigo_plano = 1;
+
+
+UPDATE aulas
+SET horario = '2024-03-10 11:00:00'
+WHERE codigo_aula = 1;
+
+
+UPDATE aulas
+SET capacidade = 18
+WHERE codigo_aula = 1;
+
+
+UPDATE pagamentos
+SET status = 'Pago'
+WHERE codigo_pagamento = 2;
+
+
+UPDATE pagamentos
+SET valor = 220.00
+WHERE codigo_pagamento = 2;
+
+
+DELETE FROM planos_de_treinamento WHERE codigo_aluno = 2;
+
+
+DELETE FROM pagamentos WHERE codigo_aluno = 2;
+
+
+DELETE FROM alunos WHERE codigo_aluno = 2;
+
+
+DELETE FROM aulas WHERE codigo_instrutor = 1;
+
+
+DELETE FROM instrutores WHERE codigo_instrutor = 1;
+
+
+DELETE FROM planos_de_treinamento WHERE codigo_plano = 2;
+
+DELETE FROM aulas WHERE codigo_aula = 2;
+
+
+DELETE FROM pagamentos WHERE codigo_pagamento = 2;

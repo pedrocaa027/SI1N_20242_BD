@@ -1,0 +1,140 @@
+INSERT INTO clientes (codigo_cliente, cnpj, razao_social, ramo_atividade, data_cadastramento, pessoa_contato)
+VALUES
+(1, '12.345.678/0001-90', 'TechCorp Ltda.', 'Tecnologia', '2024-10-01', 'Carlos');
+
+INSERT INTO clientes (codigo_cliente, cnpj, razao_social, ramo_atividade, data_cadastramento, pessoa_contato)
+VALUES
+(2, '23.456.789/0001-91', 'AutoParts Ltda.', 'Automobilístico', '2024-10-10', 'Fernanda');
+
+INSERT INTO telefones_clientes (codigo_cliente, telefone)
+VALUES
+(1, '(11) 12345-6789');
+
+INSERT INTO enderecos_clientes (codigo_cliente, tipo_endereco, numero, logradouro, complemento, cep, bairro, cidade, estado)
+VALUES
+(1, 1, '123', 'Rua Principal', 'Apto 101', '01001-000', 'Centro', 'São Paulo', 'SP');
+
+
+INSERT INTO empregados (matricula, nome, cargo, salario, data_admissao, qualificacoes)
+VALUES
+(1001, 'Roberta', 'Analista de Sistemas', 5000.00, '2020-02-15', 'Superior Completo');
+
+INSERT INTO empregados (matricula, nome, cargo, salario, data_admissao, qualificacoes)
+VALUES
+(1002, 'João ', 'Desenvolvedor', 4500.00, '2021-05-20', 'Superior Completo');
+
+
+INSERT INTO telefones_empregados (matricula, telefone)
+VALUES (1001, '(11) 99876-5432');
+
+INSERT INTO enderecos_empregados (matricula, tipo_endereco, numero, logradouro, complemento, cep, bairro, cidade, estado)
+VALUES (1001, 2, '456', 'Rua do Trabalhador', 'Bloco A', '02002-000', 'Jardim São Paulo', 'São Paulo', 'SP');
+
+
+INSERT INTO empresas (cnpj, razao_social, pessoa_contato)
+VALUES
+('34.567.890/0001-92', 'Companhia X Ltda.', 'Júlio');
+INSERT INTO telefones_empresas (cnpj, telefone)
+VALUES ('34.567.890/0001-92', '(21) 3344-5566');
+
+INSERT INTO enderecos_empresas (cnpj, tipo_endereco, numero, logradouro, complemento, cep, bairro, cidade, estado)
+VALUES 
+('34.567.890/0001-92', 1, '789', 'Avenida Brasil', 'Sala 202', '20000-100', 'Centro', 'Rio de Janeiro', 'RJ');
+
+
+INSERT INTO fornecedores (cnpj, razao_social, pessoa_contato)
+VALUES ('45.678.901/0001-93', 'Fornecedor Z Ltda.', 'Patrícia');
+
+INSERT INTO telefones_fornecedores (cnpj, telefone)
+VALUES ('45.678.901/0001-93', '(31) 99999-8888');
+
+INSERT INTO enderecos_fornecedores (cnpj, tipo_endereco, numero, logradouro, complemento, cep, bairro, cidade, estado)
+VALUES 
+('45.678.901/0001-93', 1, '101', 'Rua das Flores', 'Galpão 12', '30100-100', 'Centro', 'Belo Horizonte', 'MG');
+
+
+INSERT INTO tipos_componentes (codigo_tipo, nome)
+VALUES 
+(1, 'Chip de Processador');
+
+INSERT INTO tipos_componentes (codigo_tipo, nome)
+VALUES
+(2, 'Placa de Circuito');
+
+INSERT INTO tipos_componentes (codigo_tipo, nome)
+VALUES
+(3, 'Memória RAM');
+
+
+
+UPDATE clientes
+SET telefone = '(11) 11223-4455'
+WHERE codigo_cliente = 1;
+
+
+UPDATE enderecos_clientes
+SET numero = '500', logradouro = 'Rua Nova', cidade = 'São Paulo'
+WHERE codigo_cliente = 1;
+
+
+UPDATE empregados
+SET salario = 5500.00
+WHERE matricula = 1001;
+
+
+UPDATE empregados
+SET qualificacoes = 'Mestrado em Engenharia'
+WHERE matricula = 1002;
+
+
+UPDATE fornecedores
+SET telefone = '(31) 98888-7777'
+WHERE cnpj = '45.678.901/0001-93';
+
+UPDATE enderecos_fornecedores
+SET bairro = 'Novo Centro', cidade = 'Belo Horizonte'
+WHERE cnpj = '45.678.901/0001-93';
+
+
+UPDATE encomendas
+SET valor_total = 50000.00
+WHERE numero = 1001;
+
+
+UPDATE encomendas
+SET id_forma_pagamento = 2
+WHERE numero = 1001;
+
+
+UPDATE produtos
+SET preco = 2500.00
+WHERE codigo = 1001;
+
+UPDATE produtos
+SET tempo_fabricacao = 30
+WHERE codigo = 1001;
+
+
+DELETE FROM encomendas WHERE numero IN (SELECT numero FROM encomendas WHERE codigo_cliente = 1);
+
+
+DELETE FROM clientes WHERE codigo_cliente = 1;
+
+DELETE FROM telefones_empregados WHERE matricula = 1001;
+DELETE FROM enderecos_empregados WHERE matricula = 1001;
+
+
+DELETE FROM empregados WHERE matricula = 1001;
+
+DELETE FROM telefones_fornecedores WHERE cnpj = '45.678.901/0001-93';
+DELETE FROM enderecos_fornecedores WHERE cnpj = '45.678.901/0001-93';
+
+DELETE FROM fornecedores WHERE cnpj = '45.678.901/0001-93';
+
+
+DELETE FROM encomendas WHERE numero = 1001;
+
+
+DELETE FROM componentes WHERE codigo_produto = 1001;
+
+DELETE FROM produtos WHERE codigo = 1001;

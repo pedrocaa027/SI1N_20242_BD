@@ -1,0 +1,127 @@
+INSERT INTO passageiros (id_passageiro, nome, cpf, telefone, endereco)
+VALUES
+(1, 'João Silva', '123.456.789-00', '(11) 98765-4321', 'Rua A, 123, São Paulo');
+
+INSERT INTO passageiros (id_passageiro, nome, cpf, telefone, endereco)
+VALUES
+(2, 'Maria Oliveira', '234.567.890-01', '(21) 23456-7890', 'Av. B, 456, Rio de Janeiro');
+
+INSERT INTO passageiros (id_passageiro, nome, cpf, telefone, endereco)
+VALUES 
+(3, 'Carlos Souza', '345.678.901-02', '(31) 34567-8901', 'Rua C, 789, Belo Horizonte');
+
+
+INSERT INTO aeroportos (id_aeroporto, nome, cidade, pais)
+VALUES
+(1, 'Aeroporto Internacional de São Paulo', 'São Paulo', 'Brasil');
+
+INSERT INTO aeroportos (id_aeroporto, nome, cidade, pais)
+VALUES 
+(2, 'Aeroporto Internacional do Rio de Janeiro', 'Rio de Janeiro', 'Brasil');
+
+INSERT INTO aeroportos (id_aeroporto, nome, cidade, pais)
+VALUES 
+(3, 'Aeroporto Internacional de Belo Horizonte', 'Belo Horizonte', 'Brasil');
+
+
+INSERT INTO voos (id_voo, codigo_voo, id_aeroporto_origem, id_aeroporto_destino, horario_partida, horario_chegada)VALUES
+(1, 'FH123', 1, 2, '2024-11-10 10:00:00', '2024-11-10 12:00:00');
+
+INSERT INTO voos (id_voo, codigo_voo, id_aeroporto_origem, id_aeroporto_destino, horario_partida, horario_chegada)VALUES
+(2, 'FH456', 2, 3, '2024-11-10 15:00:00', '2024-11-10 17:00:00');
+
+
+INSERT INTO aeronaves (id_aeronave, modelo, capacidade)VALUES 
+(1, 'Boeing 737', 150);
+
+INSERT INTO aeronaves (id_aeronave, modelo, capacidade)VALUES
+(2, 'Airbus A320', 180);
+
+
+
+INSERT INTO reservas (id_reserva, id_passageiro, id_voo, data_reserva)VALUES 
+(1, 1, 1, '2024-10-15');
+
+INSERT INTO reservas (id_reserva, id_passageiro, id_voo, data_reserva)VALUES
+(2, 2, 1, '2024-10-16');
+
+INSERT INTO reservas (id_reserva, id_passageiro, id_voo, data_reserva)VALUES
+(3, 3, 2, '2024-10-17');
+
+
+INSERT INTO funcionarios (id_funcionario, nome, cargo)VALUES 
+(1, 'Pedro Lima', 'Piloto');
+
+INSERT INTO funcionarios (id_funcionario, nome, cargo)VALUES
+(2, 'Ana Costa', 'Comissária de bordo');
+
+INSERT INTO funcionarios (id_funcionario, nome, cargo)VALUES 
+(3, 'Carlos Pereira', 'Piloto');
+
+
+
+UPDATE passageiros
+SET telefone = '(11) 98877-6655'
+WHERE id_passageiro = 1;
+
+
+UPDATE passageiros
+SET endereco = 'Rua D, 101, São Paulo'
+WHERE id_passageiro = 2;
+
+
+UPDATE voos
+SET horario_partida = '2024-11-10 11:30:00'
+WHERE id_voo = 1;
+
+UPDATE voos
+SET id_aeroporto_origem = 3
+WHERE id_voo = 2;
+
+
+UPDATE reservas
+SET data_reserva = '2024-10-20'
+WHERE id_reserva = 1;
+
+
+UPDATE reservas
+SET id_voo = 2
+WHERE id_reserva = 2;
+
+
+UPDATE funcionarios
+SET cargo = 'Co-piloto'
+WHERE id_funcionario = 1;
+
+
+UPDATE funcionarios
+SET nome = 'Ana'
+WHERE id_funcionario = 2;
+
+
+UPDATE aeronaves
+SET capacidade = 160
+WHERE id_aeronave = 1;
+
+UPDATE aeronaves
+SET modelo = 'Boeing 787'
+WHERE id_aeronave = 2;
+
+
+
+DELETE FROM reservas WHERE id_passageiro = 1;
+
+
+DELETE FROM passageiros WHERE id_passageiro = 1;
+
+DELETE FROM reservas WHERE id_voo = 1;
+
+
+DELETE FROM voos WHERE id_voo = 1;
+
+
+DELETE FROM reservas WHERE id_reserva = 2;
+
+DELETE FROM funcionarios WHERE id_funcionario = 2;
+
+DELETE FROM aeronaves WHERE id_aeronave = 1;

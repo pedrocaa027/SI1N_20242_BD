@@ -1,0 +1,100 @@
+INSERT INTO fornecedores (id_fornecedor, nome, endereco, pais, telefone) VALUES
+(1, 'Fornecedor 1', 'Carlos, Centro, São Paulo', 'Brasil', '(11) 92365-4321');
+
+INSERT INTO fornecedores (id_fornecedor, nome, endereco, pais, , telefone) VALUES 
+(2, 'Fornecedor 2', 'Lucas, 987, Rio de Janeiro', 'Brasil', '(21) 22456-5899');
+
+INSERT INTO fornecedores (id_fornecedor, nome, endereco, pais, telefone) VALUES 
+(3, 'Fornecedor 3', 'Marcos, 765, Belo Horizonte', 'Brasil', '(31) 39867-1901');
+
+
+
+INSERT INTO produtos (id_produto, nome_produto, descricao, unidade_medida, preco_unitario) VALUES
+(1, 'Produto 1', 'aparelho eletrônico', 'unidade', 60.00);
+
+INSERT INTO produtos (id_produto, nome_produto, descricao, unidade_medida, preco_unitario)VALUES 
+(2, 'Produto 2', 'Peça mecânica', 'kg', 20.00);
+
+INSERT INTO produtos (id_produto, nome_produto, descricao, unidade_medida, preco_unitario)VALUES 
+(3, 'Produto 3', 'Material de tinta', 'litro', 10.00);
+
+
+INSERT INTO fornecedor_produto (id_fornecedor, id_produto)
+VALUES (1, 1), (1, 2), (2, 3), (3, 1);
+
+
+INSERT INTO pedidos_compra (id_pedido, id_fornecedor, data_pedido, data_entrega, status)VALUES
+(1, 1, '2024-10-01', '2024-10-15', 'Em processamento');
+
+INSERT INTO pedidos_compra (id_pedido, id_fornecedor, data_pedido, data_entrega, status)VALUES 
+2, 2, '2024-10-05', '2024-10-20', 'Em processamento');
+
+INSERT INTO pedidos_compra (id_pedido, id_fornecedor, data_pedido, data_entrega, status)VALUES
+(3, 3, '2024-10-10', '2024-10-25', 'Em processamento');
+
+
+INSERT INTO recebimento_material (id_recebimento, id_pedido, data_recebimento, quantidade_recebida, condicao_material)VALUES
+(1, 1, '2024-10-15', 100, 'Aceito');
+
+INSERT INTO recebimento_material (id_recebimento, id_pedido, data_recebimento, quantidade_recebida, condicao_material)
+VALUES (2, 2, '2024-10-20', 150, 'Aceito');
+
+
+
+UPDATE fornecedores
+SET telefone = '(11) 91234-5678'
+WHERE id_fornecedor = 1;
+
+UPDATE fornecedores
+SET pessoa_contato = 'Ana Costa'
+WHERE id_fornecedor = 2;
+
+
+UPDATE produtos
+SET preco_unitario = 55.00
+WHERE id_produto = 1;
+
+UPDATE produtos
+SET descricao = 'Peça eletrônica avançada'
+WHERE id_produto = 2;
+
+
+UPDATE pedidos_compra
+SET status = 'Enviado'
+WHERE id_pedido = 1;
+
+UPDATE pedidos_compra
+SET data_entrega_prevista = '2024-10-30'
+WHERE id_pedido = 2;
+
+
+UPDATE recebimento_material
+SET quantidade_recebida = 110
+WHERE id_recebimento = 1;
+
+UPDATE recebimento_material
+SET condicao_material = 'Rejeitado'
+WHERE id_recebimento = 2;
+
+
+UPDATE distribuicao_filiais
+SET quantidade_distribuida = 60
+WHERE id_distribuicao = 1;
+
+
+UPDATE distribuicao_filiais
+SET id_filial = 2
+WHERE id_distribuicao = 2;
+
+DELETE FROM fornecedor_produto WHERE id_fornecedor = 1;
+DELETE FROM fornecedores WHERE id_fornecedor = 1;
+
+DELETE FROM fornecedor_produto WHERE id_produto = 1;
+DELETE FROM produtos WHERE id_produto = 1;
+Tabela: pedidos_compra
+
+DELETE FROM pedidos_compra WHERE id_pedido = 3;
+
+DELETE FROM recebimento_material WHERE id_recebimento = 2;
+
+DELETE FROM distribuicao_filiais WHERE id_distribuicao = 1;
